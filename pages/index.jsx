@@ -17,35 +17,31 @@ const Home = () => {
   const { data, error } = useSWR(`${apiBaseUrl}/tasks`, fetcher);
   const [isActive, setIsActive] = useState(!data);
 
-  if (error) {
-    return (
-      <Image
-        src="/sumfucky.gif"
-        alt="Sum' fucky happened"
-        layout="intrinsic"
-        width={590}
-        height={300}
-      />
-    );
-  }
-
   return (
     <>
       <CSSTransition
-        in={!data}
+        in={!error && !data}
         classNames={{
           enter: spinerContainerEnter,
           enterActive: spinerContainerEnterActive,
           exit: spinnerContainerExit,
           exitActive: spinnerContainerExitActive,
         }}
-        timeout={1200}
-        onExited={() => setIsActive(!data)}
+        timeout={1100}
+        onExited={() => setIsActive(!error && !data)}
       >
         <Spinner active={isActive} />
       </CSSTransition>
+      {error ? (
+        <Image
+          src="/sumfucky.gif"
+          alt="Sum' fucky happened"
+          layout="intrinsic"
+          width={590}
+          height={300}
+        />
+      ) : <Board />}
 
-      <Board />
     </>
   );
 };
