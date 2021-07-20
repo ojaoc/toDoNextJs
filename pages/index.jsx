@@ -1,13 +1,21 @@
 import Spinner from 'components/Spinner';
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import fetcher from 'utils/fetcher';
 import useSWR from 'swr';
 import apiBaseUrl from 'utils/apiBaseUrl';
 import Board from 'components/Board';
+import { CSSTransition } from 'react-transition-group';
+import {
+  spinerContainerEnter,
+  spinerContainerEnterActive,
+  spinnerContainerExit,
+  spinnerContainerExitActive,
+} from 'styles/Spinner.module.scss';
 
 const Home = () => {
-  const { data, error } = useSWR(`${apiBaseUrl}/list-tasks`, fetcher);
+  const { data, error } = useSWR(`${apiBaseUrl}/tasks`, fetcher);
+  const [isActive, setIsActive] = useState(!data);
 
   if (error) {
     return (
@@ -20,9 +28,26 @@ const Home = () => {
       />
     );
   }
-  if (!data) return <Spinner />;
 
-  return <Board />;
+  return (
+    <>
+      <CSSTransition
+        in={!data}
+        classNames={{
+          enter: spinerContainerEnter,
+          enterActive: spinerContainerEnterActive,
+          exit: spinnerContainerExit,
+          exitActive: spinnerContainerExitActive,
+        }}
+        timeout={1200}
+        onExited={() => setIsActive(!data)}
+      >
+        <Spinner active={isActive} />
+      </CSSTransition>
+
+      <Board />
+    </>
+  );
 };
 
 export default Home;

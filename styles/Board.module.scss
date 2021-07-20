@@ -1,0 +1,8 @@
+@use "variables";
+
+.board {
+    padding: 100px;
+    border-radius: 10px;
+    background-color: variables.$very-light-grey;
+    box-shadow: 0 0 30px black;
+}

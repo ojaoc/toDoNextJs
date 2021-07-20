@@ -3,12 +3,15 @@ import {
   spinner,
   doubleBounce1,
   doubleBounce2,
-} from 'styles/Spinner.module.sass';
+  spinnerContainer,
+} from 'styles/Spinner.module.scss';
 
-const Spinner = () => (
-  <div className={spinner}>
-    <div className={doubleBounce1} />
-    <div className={doubleBounce2} />
+const Spinner = ({ active }) => active && (
+  <div className={spinnerContainer}>
+    <div className={spinner}>
+      <div className={doubleBounce1} />
+      <div className={doubleBounce2} />
+    </div>
   </div>
 );
 
