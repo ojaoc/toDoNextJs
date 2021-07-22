@@ -6,10 +6,10 @@
     background-color: variables.$dark-blue;
     z-index: 1000;
     width: 100vw;
-    padding: 0.4em 0.6em;
+    padding: 0.6em 0.6em 0.4em 0.6em;
     position: fixed;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     top: 0;
     border-bottom: 2px solid variables.$very-light-grey;
