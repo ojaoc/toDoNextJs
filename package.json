@@ -8,10 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fontsource/josefin-sans": "^4.5.0",
     "axios": "^0.21.1",
     "next": "10.x",
     "react": "17.x",
     "react-dom": "17.x",
+    "react-icons": "^4.2.0",
     "react-transition-group": "^4.4.2",
     "sass": "^1.35.2",
     "swr": "^0.5.6"

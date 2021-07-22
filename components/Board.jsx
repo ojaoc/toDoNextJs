@@ -2,7 +2,7 @@ import React from 'react';
 import { board } from 'styles/Board.module.scss';
 
 const Board = () => (
-  <div className={board}>Swag</div>
+  <div className={board} />
 );
 
 export default Board;
