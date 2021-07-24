@@ -1,24 +1,58 @@
 @use "variables";
 
-.header {
+@mixin icon {
+    margin: 0.05em 0.4em 0.2em 0.4em;
+}
+
+.mainContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-family: "Josefin Sans";
-    font-size: 1.5em;
+    font-size: 1.3em;
     background-color: variables.$dark-blue;
     z-index: 1000;
-    width: 100vw;
+    width: 100%;
     padding: 0.6em 0.6em 0.4em 0.6em;
+    max-width: variables.$md;
     position: fixed;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     top: 0;
-    border-bottom: 2px solid variables.$very-light-grey;
     color: variables.$very-light-grey;
-    @media screen and (max-width: variables.$md) {
-        justify-content: center;
+}
+
+.appLabel {
+    display: flex;
+    align-items: center;
+}
+
+.darkModeContainer {
+    display: flex;
+    align-items: center;
+    :hover {
+        opacity: 0.6;
     }
 }
 
 .icon {
-    margin: 0.05em 0.4em 0.2em 0.4em;
+    @include icon;
+}
+
+.iconButton {
+    @include icon;
+    cursor: pointer;
+    :hover {
+        opacity: 1;
+    }
+}
+
+.separator {
+    color: variables.$very-light-grey;
+    background-color: variables.$very-light-grey;
+    width: 100vw;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    margin: 0;
+    border: none;
+    height: 3px;
 }
