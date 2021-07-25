@@ -4,6 +4,16 @@
     margin: 0.05em 0.4em 0.2em 0.4em;
 }
 
+@mixin separator {
+    width: 100vw;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    margin: 0;
+    border: none;
+    height: 3px;
+}
+
 .mainContainer {
     display: flex;
     justify-content: space-between;
@@ -44,13 +54,13 @@
 }
 
 .separator {
-    color: attr(color);
-    background-color: attr(color);
-    width: 100vw;
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    margin: 0;
-    border: none;
-    height: 3px;
+    @include separator;
+    color: variables.$dark-blue;
+    background-color: variables.$dark-blue;
+}
+
+.separator[data-theme="dark"] {
+    @include separator;
+    color: variables.$very-light-grey;
+    background-color: variables.$very-light-grey;
 }
