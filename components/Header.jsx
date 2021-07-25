@@ -7,9 +7,9 @@ import { useTheme } from 'next-themes';
 import DarkModeBtn from './DarkModeBtn';
 
 const Header = () => {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
-  const toggleDarkMode = () => (theme === 'dark' ? setTheme('light') : setTheme('dark'));
+  const toggleDarkMode = () => (resolvedTheme === 'dark' ? setTheme('light') : setTheme('dark'));
 
   return (
     <>
@@ -19,7 +19,7 @@ const Header = () => {
           To Do
         </div>
         <div className={darkModeContainer}>
-          <DarkModeBtn darkModeEnabled={theme === 'dark'} iconClass={iconButton} onClick={toggleDarkMode} />
+          <DarkModeBtn darkModeEnabled={resolvedTheme === 'dark'} iconClass={iconButton} onClick={toggleDarkMode} />
         </div>
       </div>
       <hr className={separator} />
