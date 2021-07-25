@@ -10,14 +10,12 @@
     align-items: center;
     font-family: "Josefin Sans";
     font-size: 1.3em;
-    background-color: variables.$dark-blue;
     z-index: 1000;
     width: 100%;
     padding: 0.6em 0.6em 0.4em 0.6em;
     max-width: variables.$md;
     position: fixed;
     top: 0;
-    color: variables.$very-light-grey;
 }
 
 .appLabel {

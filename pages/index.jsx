@@ -1,5 +1,5 @@
 import Spinner from 'components/Spinner';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import fetcher from 'utils/fetcher';
 import useSWR from 'swr';
@@ -12,13 +12,21 @@ import {
   spinnerContainerExit,
   spinnerContainerExitActive,
 } from 'styles/Spinner.module.scss';
+import Header from 'components/Header';
 
 const Home = () => {
+  const [mounted, setMounted] = useState(false);
   const { data, error } = useSWR(`${apiBaseUrl}/tasks`, fetcher);
   const [isActive, setIsActive] = useState(!data);
 
+  // When mounted on client, now we can show the UI
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return <Spinner active />;
+
   return (
     <>
+      <Header />
       <CSSTransition
         in={!error && !data}
         classNames={{
