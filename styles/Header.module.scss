@@ -59,7 +59,7 @@
     background-color: variables.$dark-blue;
 }
 
-.separator[data-theme="dark"] {
+[data-theme="dark"] .separator {
     @include separator;
     color: variables.$very-light-grey;
     background-color: variables.$very-light-grey;
