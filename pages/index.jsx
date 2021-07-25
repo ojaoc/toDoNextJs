@@ -48,7 +48,7 @@ const Home = () => {
           width={590}
           height={300}
         />
-      ) : <Board />}
+      ) : <Board tasks={data} />}
 
     </>
   );
