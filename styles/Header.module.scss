@@ -44,8 +44,8 @@
 }
 
 .separator {
-    color: variables.$very-light-grey;
-    background-color: variables.$very-light-grey;
+    color: attr(color);
+    background-color: attr(color);
     width: 100vw;
     z-index: 1000;
     position: fixed;
