@@ -4,7 +4,7 @@ import BoardItem from './BoardItem';
 
 const Board = ({ tasks }) => (
   <div className={board}>
-    {tasks?.map(({ description }) => <BoardItem description={description} />)}
+    {tasks?.map(({ description, url }) => <BoardItem key={url} description={description} />)}
   </div>
 );
 
