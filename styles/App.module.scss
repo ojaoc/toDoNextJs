@@ -1,9 +1,7 @@
 @use "variables";
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: variables.$md;
+    width: 100%;
+    max-width: variables.$sm;
     margin: auto;
 }

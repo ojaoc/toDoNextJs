@@ -12,18 +12,16 @@ const Header = () => {
   const toggleDarkMode = () => (resolvedTheme === 'dark' ? setTheme('light') : setTheme('dark'));
 
   return (
-    <>
-      <div className={mainContainer}>
-        <div className={appLabel}>
-          <RiCalendarCheckFill className={icon} />
-          To Do
-        </div>
-        <div className={darkModeContainer}>
-          <DarkModeBtn darkModeEnabled={resolvedTheme === 'dark'} iconClass={iconButton} onClick={toggleDarkMode} />
-        </div>
+    <div className={mainContainer}>
+      <div className={separator} />
+      <div className={appLabel}>
+        <RiCalendarCheckFill className={icon} />
+        To Do
       </div>
-      <hr className={separator} />
-    </>
+      <div className={darkModeContainer}>
+        <DarkModeBtn darkModeEnabled={resolvedTheme === 'dark'} iconClass={iconButton} onClick={toggleDarkMode} />
+      </div>
+    </div>
   );
 };
 

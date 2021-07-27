@@ -12,7 +12,6 @@ import {
   spinnerContainerExit,
   spinnerContainerExitActive,
 } from 'styles/Spinner.module.scss';
-import Header from 'components/Header';
 
 const Home = () => {
   const [mounted, setMounted] = useState(false);
@@ -26,7 +25,6 @@ const Home = () => {
 
   return (
     <>
-      <Header />
       <CSSTransition
         in={!error && !data}
         classNames={{
