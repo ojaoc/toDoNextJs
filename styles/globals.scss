@@ -6,6 +6,7 @@
   font-family: variables.$font-stack;
   background-color: variables.$very-light-grey;
   color: variables.$dark-blue;
+  min-width: 280px;
 }
 
 [data-theme="dark"] {
