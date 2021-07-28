@@ -14,7 +14,7 @@ import {
 } from 'styles/Spinner.module.scss';
 
 const Home = () => {
-  const { data, error } = useSWR(`${apiBaseUrl}/tasks`, fetcher);
+  const { data, error, mutate } = useSWR(`${apiBaseUrl}/tasks`, fetcher);
   const [isActive, setIsActive] = useState(!data);
 
   return (
@@ -40,7 +40,7 @@ const Home = () => {
           width={590}
           height={300}
         />
-      ) : <Board tasks={data} />}
+      ) : <Board tasks={data} mutate={mutate} />}
 
     </>
   );
