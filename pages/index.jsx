@@ -14,7 +14,9 @@ import {
 } from 'styles/Spinner.module.scss';
 
 const Home = () => {
-  const { data, error, mutate } = useSWR(`${apiBaseUrl}/tasks`, fetcher);
+  const {
+    data, error, mutate,
+  } = useSWR(`${apiBaseUrl}/tasks`, fetcher);
   const [isActive, setIsActive] = useState(!data);
 
   return (
