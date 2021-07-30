@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useCallback, useState } from 'react';
-import { itemContainer } from 'styles/BoardItem.module.scss';
+import { itemContainer, button, inputText } from 'styles/BoardItem.module.scss';
 import { customInput, customLabel, loader } from 'styles/Checkbox.module.scss';
 
 const RegularBoardItem = ({
@@ -19,15 +19,15 @@ const RegularBoardItem = ({
 const NewBoardItem = ({
   id, description, handleChangeDescription, handleSubmit,
 }) => (
-  <form onSubmit={handleSubmit(description)}>
+  <form onSubmit={handleSubmit(description)} autoComplete="off">
     <input
       type="text"
       id={id}
-      className={customLabel}
       value={description}
       onChange={handleChangeDescription}
+      className={inputText}
     />
-    <button type="submit">Add</button>
+    <button type="submit" className={button}>Add</button>
   </form>
 );
 
@@ -51,7 +51,7 @@ const BoardItem = ({
   }, [isDone]);
 
   return (
-    <div className={itemContainer}>
+    <>
       {isNew ? (
         <NewBoardItem
           id={id}
@@ -60,15 +60,17 @@ const BoardItem = ({
           handleSubmit={handleSubmit}
         />
       ) : (
-        <RegularBoardItem
-          loadingPatch={loadingPatch}
-          id={id}
-          toggleIsDone={toggleIsDone}
-          isDone={isDone}
-          description={description}
-        />
+        <div className={itemContainer}>
+          <RegularBoardItem
+            loadingPatch={loadingPatch}
+            id={id}
+            toggleIsDone={toggleIsDone}
+            isDone={isDone}
+            description={description}
+          />
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

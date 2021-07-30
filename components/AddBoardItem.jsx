@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useCallback, useState } from 'react';
-import { itemContainer } from 'styles/BoardItem.module.scss';
+import { buttonContainer, button } from 'styles/BoardItem.module.scss';
 import apiBaseUrl from 'utils/apiBaseUrl';
 import BoardItem from './BoardItem';
 
-const AddBoardItem = ({ isAdding, setIsAdding, mutate }) => {
-  const [description, setDescription] = useState('');
+const AddBoardItem = ({
+  isAdding, setIsAdding, mutate, description, setDescription,
+}) => {
   const [loadingPost, setLoadingPost] = useState(false);
 
   const handleChangeDescription = (e) => {
@@ -28,7 +29,7 @@ const AddBoardItem = ({ isAdding, setIsAdding, mutate }) => {
   }, []);
 
   return (
-    <div className={itemContainer}>
+    <div className={buttonContainer}>
       {isAdding ? (
         <BoardItem
           isNew
@@ -39,7 +40,11 @@ const AddBoardItem = ({ isAdding, setIsAdding, mutate }) => {
         />
       )
         : (
-          <button type="button" onClick={() => setIsAdding((prev) => !prev)}>
+          <button
+            type="button"
+            onClick={() => setIsAdding((prev) => !prev)}
+            className={button}
+          >
             New task
           </button>
         )}

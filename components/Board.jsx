@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React, { useCallback, useState } from 'react';
-import { board } from 'styles/Board.module.scss';
+import { board, noTaskHeader, buttonContainer } from 'styles/Board.module.scss';
 import axios from 'axios';
 import apiBaseUrl from 'utils/apiBaseUrl';
 import BoardItem from './BoardItem';
@@ -10,6 +10,7 @@ import ClearDoneTasks from './ClearDoneTasks';
 const Board = ({ tasks, mutate }) => {
   const [isAdding, setIsAdding] = useState(false);
   const [loadingDelete, setLoadingDelete] = useState(false);
+  const [description, setDescription] = useState('');
 
   const deleteDoneTasks = useCallback(async () => {
     setLoadingDelete(true);
@@ -24,19 +25,36 @@ const Board = ({ tasks, mutate }) => {
     }
   }, [tasks]);
 
+  const handleCloseAddTask = () => {
+    setIsAdding(false);
+    setDescription('');
+  };
+
   return (
     <div className={board}>
-      <AddBoardItem isAdding={isAdding} setIsAdding={setIsAdding} mutate={mutate} />
-      <ClearDoneTasks onClick={deleteDoneTasks} />
-      {tasks?.map(({ description, url, is_done }) => (
-        <BoardItem
-          key={url}
-          description={description}
-          url={url}
-          isDone={is_done}
+      <div className={buttonContainer}>
+        <AddBoardItem
+          isAdding={isAdding}
+          setIsAdding={setIsAdding}
           mutate={mutate}
+          description={description}
+          setDescription={setDescription}
         />
-      ))}
+        <ClearDoneTasks
+          onClick={isAdding ? handleCloseAddTask : deleteDoneTasks}
+          isAdding={isAdding}
+        />
+      </div>
+      {tasks?.length < 1 ? <h4 className={noTaskHeader}>Nothing to see here!</h4>
+        : tasks?.map(({ description, url, is_done }) => (
+          <BoardItem
+            key={url}
+            description={description}
+            url={url}
+            isDone={is_done}
+            mutate={mutate}
+          />
+        ))}
     </div>
   );
 };

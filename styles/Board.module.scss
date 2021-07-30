@@ -4,3 +4,15 @@
     margin-top: 7em;
     width: 100%;
 }
+
+.noTaskHeader {
+    text-align: center;
+    opacity: 0.5;
+    font-weight: 400;
+    margin-top: 3em;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-start;
+}

@@ -1,7 +1,62 @@
+@use "variables";
+
+@mixin btn {
+    background: none;
+    padding: 0.5em 1em;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+@mixin inp {
+    background: none;
+    border: none;
+    padding: 0.5em 1em;
+    outline: none;
+}
+
 .itemContainer {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
     padding: 1.2em;
+}
+
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 1em 1em 1em;
+}
+
+.button {
+    @include btn;
+    border: 2px solid variables.$dark-blue;
+    color: variables.$dark-blue;
+    &:hover {
+        background: variables.$dark-blue;
+        color: variables.$very-light-grey;
+    }
+}
+
+[data-theme="dark"] .button {
+    @include btn;
+    border: 2px solid variables.$very-light-grey;
+    color: variables.$very-light-grey;
+    &:hover {
+        background: variables.$very-light-grey;
+        color: variables.$dark-blue;
+    }
+}
+
+.inputText {
+    @include inp;
+    border-bottom: 2px solid variables.$dark-blue;
+}
+
+[data-theme="dark"] .inputText {
+    @include inp;
+
+    border-bottom: 2px solid variables.$very-light-grey;
 }
