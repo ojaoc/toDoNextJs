@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ClearDoneTasks = () => (
-  <button type="button">
+const ClearDoneTasks = ({ onClick }) => (
+  <button type="button" onClick={onClick}>
     Clear
   </button>
 );
