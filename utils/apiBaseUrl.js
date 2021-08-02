@@ -1,3 +1,3 @@
-const apiBaseUrl = 'http://127.0.0.1:8000/api';
+const apiBaseUrl = 'https://todo-django-ojaoc.herokuapp.com/api';
 
 export default apiBaseUrl;
